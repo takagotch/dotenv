@@ -1,9 +1,10 @@
 ### dotenv
 ---
-
+.rb
 https://github.com/bkeepers/dotenv
 
-
+.java
+https://github.com/shyiko/dotenv
 ```
 gem 'dotenv-rails', groups: [:development, :test]
 bundle
