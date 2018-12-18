@@ -3,6 +3,9 @@
 .rb
 https://github.com/bkeepers/dotenv
 
+.js
+https://github.com/motdotla/dotenv
+
 .java
 https://github.com/shyiko/dotenv
 ```
