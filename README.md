@@ -8,6 +8,7 @@ https://github.com/motdotla/dotenv
 
 .java
 https://github.com/shyiko/dotenv
+
 ```
 gem 'dotenv-rails', groups: [:development, :test]
 bundle
@@ -67,6 +68,75 @@ Dotenv.require_keys("SERVICE_APP_ID", "SECRET_KEY", "SERVICE_SECRET")
 
 ```
 
+```sh
+npm install dotenv
+yarn add dotenv
+
+node -r dotenv/config your_script.js
+node -r dotenv/config your_script.js dotenv_config_path=/custom/path/to/your/env/vars
+
+DOTENV_CONFIG_<OPTION>=value node -r dotenv/config your_script.js
+DOTENV_CONFIG_ENCODING=latin1 node -r dotenv/config your_script.js dotenv_config_path=/custom/path/to/.env
 ```
+
+```js
+require('dotenv').config()
+
+DB_HOST=localhost
+DB_USER=root
+DB_PASS=s1mpl3
+
+const db = require('db')
+db.connect({
+  host: process.env.DB_HOST,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASS
+})
+
+const result = dotenv.config()
+
+if (result.error) {
+  throw result.error
+}
+
+console.log(result.parsed)
+
+require('dotenv').config({ path: '/full/custom/path/to/your/env/vars' })
+
+require('dotenv').config({ encoding: 'latin1' })
+
+require('dotenv').config({ debug: process.env.DEBUG })
+
+const dotenv = require('dotenv')
+const buf = Buffer.from('BASIC=basic')
+const config = dotenv.parse(buf)
+console.log(typeof config, config)
+
+const dotenv = require('dotenv')
+const buf = Buffer.from('hello')
+const opt = { debug: true }
+const config = dotenv.parse(buf, opt)
+
+const fs = require('fs')
+const dotenv = require('dotenv')
+const envConfig = dotenv.parse(fs.readFileSync('.env.override'))
+for (let k in envConfig) {
+  process.env[k] = envConfig[k]
+}
+
+
+const dotenv = require('dotenv')
+const variableExpansion = require('dotenv-expand')
+const myEnv = dotenv.config()
+variableExpansion(myEnv)
+
+import { Client } from 'best-error-reporting-service'
+export const client = new Client(process.env.BEST_API_KEY)
+
+import dotenv from 'dotenv'
+import errorReporter from './errorReporter'
+
+dotenv.config()
+errorReporter.client.report(new Error('faq example'))
 ```
 
